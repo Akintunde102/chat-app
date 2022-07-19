@@ -6,11 +6,7 @@ import Image from 'react-bootstrap/Image'
 const SenderMessage = ({ message = "test message", name = "user 1" }) => {
 
   return (
-    <Row style={{ padding: "5px 20px 20px" }}>
-      <Col style={{ color: "white", marginTop: "20px" }}>
-        <div style={{ color: "black" }}>{name}</div>
-        <div style={{ background: "#ddd", padding: "15px", borderRadius: "5px" }}> {message}</div>
-      </Col>
+    <Row style={{ padding: "5px 10px 20px" }}>
       <Col style={{ float: "right", padding: "8px" }} xs={3}>
         <Image
           src=
@@ -18,6 +14,10 @@ const SenderMessage = ({ message = "test message", name = "user 1" }) => {
           rounded
           style={{ width: "65px", height: "65px" }}
         />
+      </Col>
+      <Col style={{ color: "white", marginTop: "20px" }}>
+        <div style={{ color: "black" }}>{name}</div>
+        <div style={{ background: "#5468ff", padding: "15px", borderRadius: "5px" }}> {message}</div>
       </Col>
     </Row>
   );
