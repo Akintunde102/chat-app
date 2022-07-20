@@ -22,30 +22,29 @@ const App = () => {
         }
     }
 
-
-    React.useEffect(() => {    
+    React.useEffect(() => {
         const interval = setInterval(() => updateChatList(), 1000);
         return () => {
-            updateChatList()
             clearInterval(interval);
         };
     });
 
     const updateChatList = () => {
-        if (storeChatList.length > chatList.length) {
-            setChatList(storeChatList);
+        const latestChatList = store.getState().chatList;
+        if (latestChatList.length > chatList.length) {
+            setChatList(latestChatList);
         }
     }
 
     return (
-        <Container style={{ paddingTop: "40px", border: "1px #ddd solid", width: "350px" }} className="my-auto">
+        <Container className="main-container">
             {
                 !!name ?
                     <>
-                        <div style={{ overflowY: "scroll", height: "350px", overflowX: "hidden" }} onScroll={handleScroll}>
+                        <div className="chats-container" onScroll={handleScroll}>
                             <ChatList chatList={chatList.slice(-1 * chatLimit)} name={name} />
                         </div>
-                        <ChatForm customStyle={{ padding: "10px", background: "#ddd" }} name={name} setChatList={setChatList} storeChatList={storeChatList} />
+                        <ChatForm className="chat-form-container" name={name} setChatList={setChatList} storeChatList={storeChatList} />
                     </>
                     : (<NameForm />)
             }

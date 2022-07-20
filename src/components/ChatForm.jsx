@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { store } from "../store";
 
-const ChatForm = ({ name, customStyle }) => {
+const ChatForm = ({ name, ...props }) => {
   const [message, setMessage] = React.useState("");
 
   const handleMessageChange = (e) => {
@@ -21,10 +21,8 @@ const ChatForm = ({ name, customStyle }) => {
     });
   }
 
-
-
   return (
-    <Form onSubmit={handleMessageSubmit} style={{ ...customStyle}}>
+    <Form onSubmit={handleMessageSubmit} {...props}>
       <Row>
         <Col>
           <Form.Group className="mb-3" controlId="sendChat">

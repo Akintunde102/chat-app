@@ -3,20 +3,20 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image'
 
-const SenderMessage = ({ message = "test message", name = "user 1" }) => {
+const SenderMessage = ({ message, name }) => {
 
   return (
-    <Row style={{ padding: "5px 20px 20px" }}>
-      <Col style={{ color: "white", marginTop: "20px" }}>
-        <div style={{ color: "black" }}>{name}</div>
-        <div style={{ background: "#ddd", padding: "15px", borderRadius: "5px" }}> {message}</div>
+    <Row className="sender-message">
+      <Col className="message-column">
+        <div className="black-color">{name}</div>
+        <div className="message"> {message}</div>
       </Col>
-      <Col style={{ float: "right", padding: "8px" }} xs={3}>
+      <Col className="image-column" xs={3}>
         <Image
           src=
           "https://cdn-icons-png.flaticon.com/512/80/80889.png"
           rounded
-          style={{ width: "65px", height: "65px" }}
+          className="image"
         />
       </Col>
     </Row>

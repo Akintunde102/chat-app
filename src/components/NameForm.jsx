@@ -5,11 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 const NameForm = () => {
-  //const [chat, setChat] = React.useState(store.getState().chatList);
-
-
   const [formName, setFormName] = React.useState("");
-
 
   const handleNameChange = (e) => {
     e.preventDefault();
@@ -23,14 +19,14 @@ const NameForm = () => {
 
   return (
     <Row>
-      <div style={{ padding: "20px", textAlign: "center" }}> Please Enter your Name </div>
+      <div className="name-form"> Please Enter Your Name </div>
       <Form onSubmit={handleSubmit}>
         <Col>
           <Form.Group className="mb-3" controlId="sendChat">
             <Form.Control type="text" placeholder="Enter Name" onChange={handleNameChange} />
           </Form.Group>
         </Col>
-        <Col style={{ textAlign: "center" }}>
+        <Col className="centralize">
           <Button variant="primary" type="submit">
             Start Chatting
           </Button>
