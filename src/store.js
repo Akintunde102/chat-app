@@ -2,14 +2,9 @@ import { configureStore } from '@reduxjs/toolkit'
 import {
     persistStore,
     persistReducer,
-    FLUSH,
-    REHYDRATE,
-    PAUSE,
-    PERSIST,
-    PURGE,
-    REGISTER,
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { createStateSyncMiddleware, initMessageListener } from "redux-state-sync";
 import rootReducer from './reducers/rootReducer'
 
 
@@ -20,17 +15,18 @@ const persistConfig = {
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+const reduxStateSyncConfig = {};
+
+
 const store = configureStore({
     reducer: persistedReducer,
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({
-            serializableCheck: {
-                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-            },
-        }),
+    middleware: [createStateSyncMiddleware(reduxStateSyncConfig)]
 });
 
 store.subscribe(() => { console.log("store changed") });
 const persistor = persistStore(store);
+
+initMessageListener(store);
+
 
 export { store, persistor };
