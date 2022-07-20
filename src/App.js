@@ -1,10 +1,10 @@
 import React from "react";
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
 import ChatForm from "./components/ChatForm.jsx";
 import NameForm from "./components/NameForm.jsx";
 import ChatList from "./components/ChatList.jsx";
 import { store } from "./store";
+import { config } from "./config.js";
 
 const App = () => {
     const urlSearchParams = new URLSearchParams(window.location.search);
@@ -12,20 +12,19 @@ const App = () => {
     const name = params.name;
     const storeChatList = store.getState().chatList;
 
-    const [chatLimit, setChatLimit] = React.useState(5);
+    const [chatLimit, setChatLimit] = React.useState(config.chatLimit);
 
     const [chatList, setChatList] = React.useState(storeChatList);
 
     const handleScroll = (e) => {
         if (e.currentTarget.scrollTop === 0) {
-            setTimeout(() => setChatLimit(chatLimit + 5), 1000);
+            setTimeout(() => setChatLimit(chatLimit + config.chatLimit), 1000);
         }
     }
 
-    const [time, setTime] = React.useState(Date.now());
 
-    React.useEffect(() => {
-        const interval = setInterval(() => setTime(Date.now()), 1000);
+    React.useEffect(() => {    
+        const interval = setInterval(() => updateChatList(), 1000);
         return () => {
             updateChatList()
             clearInterval(interval);
@@ -33,8 +32,6 @@ const App = () => {
     });
 
     const updateChatList = () => {
-
-        console.log("Updating chat list", { a: store.getState().chatList.length, b: chatList.length })
         if (storeChatList.length > chatList.length) {
             setChatList(storeChatList);
         }
