@@ -1,0 +1,68 @@
+.main-container {
+    padding-top: 40px;
+    border: 1px #ddd solid;
+    width: 350px
+}
+
+.chats-container {
+    overflow-y: scroll;
+    height: 350px;
+    overflow-x: hidden
+}
+
+.chat-form-container {
+    padding: 10px;
+    background: #ddd
+}
+
+.name-form {
+    padding: 20px;
+    text-align: center;
+}
+
+.centralize {
+    text-align: center;
+}
+
+.receiver-message {
+    padding: 5px 10px 20px;
+    .image-column {
+        float: right;
+        padding: 8px;
+    }
+    .message-column {
+        color: white;
+        margin-top: 20px;
+        .message {
+            background: #5468ff;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    }
+}
+
+.sender-message {
+    padding: 5px 20px 20px;
+    .image-column {
+        float: right;
+        padding: 8px;
+    }
+    .message-column {
+        color: white;
+        margin-top: 20px;
+        .message {
+            background: #ddd;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    }
+}
+
+.image {
+    width: 65px;
+    height: 65px;
+}
+
+.black-color {
+    color: black;
+}
